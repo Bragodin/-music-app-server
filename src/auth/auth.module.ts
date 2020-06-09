@@ -7,6 +7,7 @@ import { ConfigModule } from '@nestjs/config';
 import { PassportModule } from '@nestjs/passport';
 import { JwtModule } from '@nestjs/jwt';
 import { JwtStrategy } from './jwt.strategy';
+import { MailModule } from '../mail/mail.module';
 
 const configModule = ConfigModule.forRoot({
   envFilePath: `.env.${process.env.NODE_ENV || 'development'}`,
@@ -22,7 +23,8 @@ const configModule = ConfigModule.forRoot({
     JwtModule.register({
       secret: process.env.JWT_SECRET,
       signOptions: { expiresIn: '1d' },
-    })
+    }),
+    MailModule
   ],
   providers: [AuthService, JwtStrategy],
   controllers: [AuthController]

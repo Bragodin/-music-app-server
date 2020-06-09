@@ -6,6 +6,7 @@ import { AuthModule } from './auth/auth.module';
 import { ConfigModule } from '@nestjs/config';
 import { MongooseModule } from '@nestjs/mongoose';
 import { TokenModule } from './token/token.module';
+import { MailModule } from './mail/mail.module';
 
 const environment = process.env.NODE_ENV || 'development';
 
@@ -25,7 +26,7 @@ const environment = process.env.NODE_ENV || 'development';
       }
   ),
     TokenModule,
-
+    MailModule,
   ],
   controllers: [AppController],
   providers: [AppService],

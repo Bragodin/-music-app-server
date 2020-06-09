@@ -3,4 +3,5 @@ export class CreateUserDto {
   readonly password: string;
   readonly role: Array<string>;
   readonly avatar: string;
+  readonly status: string;
 }
