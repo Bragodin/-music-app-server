@@ -7,6 +7,8 @@ import { ConfigModule } from '@nestjs/config';
 import { MongooseModule } from '@nestjs/mongoose';
 import { TokenModule } from './token/token.module';
 import { MailModule } from './mail/mail.module';
+import { MusicModule } from './music/music.module';
+import { MulterModule } from '@nestjs/platform-express';
 
 const environment = process.env.NODE_ENV || 'development';
 
@@ -23,10 +25,11 @@ const environment = process.env.NODE_ENV || 'development';
       {
         useNewUrlParser: true,
         useUnifiedTopology: true
-      }
+      },
   ),
     TokenModule,
     MailModule,
+    MusicModule,
   ],
   controllers: [AppController],
   providers: [AppService],

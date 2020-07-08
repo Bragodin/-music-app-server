@@ -13,13 +13,13 @@ export class MailService {
       domain: this.configService.get<string>('MAILGUN_API_DOMAIN'),
     });
   }
-
   send(data: IMailGunData): Promise<Mailgun.messages.SendResponse> {
     return new Promise((res, rej) => {
       this.mg.messages().send(data, function (error, body) {
         if (error) {
           rej(error);
         }
+        console.log(data)
         res(body);
       });
     });

@@ -1,5 +1,6 @@
 import * as mongoose from 'mongoose';
 import { roleEnum } from '../enums/role.enum';
+import { statusEnum } from '../enums/status.enum';
 
 export const UserSchema = new mongoose.Schema({
   email: {
@@ -9,6 +10,11 @@ export const UserSchema = new mongoose.Schema({
   password: {
     type: String,
     required: true
+  },
+  status: {
+    type: String,
+    enum: Object.values(statusEnum),
+    default: statusEnum.active
   },
   avatar: {
     type: String,
@@ -21,9 +27,17 @@ export const UserSchema = new mongoose.Schema({
   },
   role: {
     type: [String],
-    required: true,
-    enum: Object.values(roleEnum)
-  }
+    required: false,
+    enum: Object.values(roleEnum),
+    default: [roleEnum.user],
+  },
+  myMusic: [
+    {
+      type: mongoose.Types.ObjectId,
+      required: false,
+      ref: 'User'
+    }
+  ]
 });
 
 UserSchema.index({ email: 1 }, {unique: true });
