@@ -29,4 +29,5 @@ const configModule = ConfigModule.forRoot({
   providers: [AuthService, JwtStrategy],
   controllers: [AuthController]
 })
+
 export class AuthModule {}

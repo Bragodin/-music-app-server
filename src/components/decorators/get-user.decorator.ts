@@ -3,6 +3,6 @@ import {IUser} from '../../user/interfaces/user.interface';
 
 export const GetUser = createParamDecorator(
   (data,req): IUser => {
-    return req.args[0].user},
+      return req.args[0].user},
 );
 

@@ -11,7 +11,7 @@ export class MusicService {
     return await this.musicModel.find().exec();
   }
 
-  async postMusic() {
+  async postMusic(music) {
     return await this.musicModel.find().exec();
   }
 

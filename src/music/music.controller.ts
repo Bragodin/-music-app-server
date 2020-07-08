@@ -16,6 +16,7 @@ import { AuthGuard } from '@nestjs/passport';
 import { GetUser } from '../components/decorators/get-user.decorator';
 import { IUser } from '../user/interfaces/user.interface';
 
+
 @ApiTags('music')
 @Controller('music')
 export class MusicController {
@@ -23,14 +24,14 @@ export class MusicController {
   }
 
   @Get(':musicpath')
-  @UseGuards(AuthGuard())
-  async getMusic(@GetUser() user: IUser, @Param('musicpath') music, @Res() res): Promise<any> {
+  async getMusic(@Param('musicpath') music, @Res() res): Promise<any> {
     return res.sendFile(music, {root: 'uploads'})
   }
 
   @Post()
+  @UseGuards(AuthGuard('jwt'))
   @UseInterceptors(FilesInterceptor('music'))
-  postMusic(@UploadedFiles() file): any {
-    console.log(file);
+  postMusic(@GetUser() user: IUser, @UploadedFiles() file): any {
+      console.log(file);
   }
 }
