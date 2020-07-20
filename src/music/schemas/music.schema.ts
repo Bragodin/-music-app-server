@@ -5,6 +5,10 @@ export const MusicSchema = new mongoose.Schema({
     type: String,
     required: true
   },
+  fileName: {
+    type: String,
+    required: true
+  },
   authorId: {
     type: mongoose.Types.ObjectId,
     required: true,

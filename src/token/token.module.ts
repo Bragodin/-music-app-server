@@ -6,6 +6,7 @@ import { TokenSchema } from './schemas/user-token.schema';
 import { UserService } from '../user/user.service';
 
 @Module({
+
   imports: [
     MongooseModule.forFeature([{ name: 'Token', schema: TokenSchema }]),
   ],

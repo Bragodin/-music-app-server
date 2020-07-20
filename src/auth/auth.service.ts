@@ -85,7 +85,7 @@ export class AuthService {
       subject: 'Verify User',
       text: `
                 <h3>Hello ${user.email}!</h3>
-                <p>Please use this <a href="${confirmLink}">link</a> to confirm your account.</p>
+                <p>Please use this< a href="${confirmLink}">link</a> to confirm your account.</p>
             `,
     });
   }
@@ -119,6 +119,7 @@ export class AuthService {
 
   private async verifyToken(token): Promise<any> {
     try {
+
       const data = this.jwtService.verify(token);
       const tokenExists = await this.tokenService.exists(data._id, token);
       if (tokenExists) {
@@ -134,6 +135,7 @@ export class AuthService {
     const userToken = await this.tokenService.create(createUserTokenDto);
     return userToken;
   }
+
   async changePassword(userId: string, changePasswordDto: ChangePasswordDto): Promise<boolean> {
     const password = await this.userService.hashPassword(changePasswordDto.password);
     await this.userService.update(changePasswordDto._id, { password });
@@ -142,4 +144,5 @@ export class AuthService {
     await this.tokenService.deleteAll(userId);
     return true;
   }
+
 }

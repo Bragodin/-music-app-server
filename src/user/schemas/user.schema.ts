@@ -33,9 +33,9 @@ export const UserSchema = new mongoose.Schema({
   },
   myMusic: [
     {
-      type: mongoose.Types.ObjectId,
-      required: false,
-      ref: 'User'
+      name: {
+        type: String
+      }
     }
   ]
 });

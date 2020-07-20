@@ -4,5 +4,5 @@ export interface IMusic extends Document {
   readonly name: string;
   readonly author: string;
   readonly rating?: number;
-  readonly likes?: string;
+  readonly likes?: number;
 }
