@@ -41,7 +41,7 @@ export class UserService {
   }
 
   async getUsersNameById(id: string){
-    return await this.userModel.findById(id).select('name');
+    return this.userModel.findById(id).select('name');
   }
 
   async hashPassword(password: string): Promise<string> {
@@ -91,6 +91,11 @@ export class UserService {
         }
       }
     );
+  }
+
+  async addAvatar(avatar) {
+    console.log(avatar);
+    return this.userModel.findByIdAndUpdate(avatar.userId, { avatar: avatar.name });
   }
 }
 

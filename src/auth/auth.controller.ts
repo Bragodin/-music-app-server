@@ -11,6 +11,7 @@ import { ChangePasswordDto } from './dto/change-password.dto';
 import { GetUser } from '../components/decorators/get-user.decorator';
 
 @ApiTags('auth')
+@ApiBearerAuth()
 @Controller('auth')
 
 export class AuthController {

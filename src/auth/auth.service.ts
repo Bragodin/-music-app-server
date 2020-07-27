@@ -94,6 +94,7 @@ export class AuthService {
     if (withStatusCheck && (user.status !== statusEnum.active)) {
       throw new MethodNotAllowedException();
     }
+
     const tokenPayload: ITokenPayload = {
       _id: user._id,
       status: user.status,
@@ -109,7 +110,6 @@ export class AuthService {
       expireAt,
       uId: user._id,
     });
-
     return token;
   }
 

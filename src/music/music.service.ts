@@ -5,9 +5,7 @@ import { IMusic } from './interfaces/music.interfaces';
 import * as bcrypt from 'bcrypt';
 import { CreateMusicDto } from './dto/create-music.dtp';
 import * as _ from 'lodash';
-import { CreateUserDto } from '../user/dto/create-user.dto';
-import { IUser } from '../user/interfaces/user.interface';
-import { UserService } from '../user/user.service';
+
 
 @Injectable()
 export class MusicService {
@@ -18,7 +16,6 @@ export class MusicService {
   }
 
   async postMusic(createMusicDto: CreateMusicDto) {
-    console.log(createMusicDto)
     const createdMusic = new this.musicModel(_.assignIn( createMusicDto, {}));
     return await createdMusic.save();
   }
@@ -32,7 +29,7 @@ export class MusicService {
   }
 
   async changeMusicName(id, music) {
-    return this.musicModel.updateOne({ _id: id}, { $set: music });
+    return this.musicModel.updateOne({ _id: id }, { $set: music });
   }
 
 }
